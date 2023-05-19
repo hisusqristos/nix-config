@@ -16,5 +16,6 @@
       tdesktop
       nodejs
       git
+      exercism
     ];
 }
