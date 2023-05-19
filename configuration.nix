@@ -53,10 +53,13 @@
   services.xserver.desktopManager.xfce.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
+  services.xserver =
+    {
+      layout = "us, am";
+      xkbVariant = ", phonetic";
+
+      xkbOptions = "grp:caps_toggle"; # Keyboard layout switching options
+    };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
