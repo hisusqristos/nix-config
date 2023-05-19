@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./config/packages.nix
+      ./config/keymap.nix
     ];
 
   # Bootloader.
@@ -44,22 +45,6 @@
     LC_TELEPHONE = "hy_AM";
     LC_TIME = "hy_AM";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
-  # Configure keymap in X11
-  services.xserver =
-    {
-      layout = "us, am";
-      xkbVariant = ", phonetic";
-
-      xkbOptions = "grp:caps_toggle"; # Keyboard layout switching options
-    };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
