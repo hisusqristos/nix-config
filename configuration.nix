@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       ./config/packages.nix
       ./config/keymap.nix
+      ./config/users.nix
     ];
 
   # Bootloader.
@@ -68,18 +69,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.blasteroid = {
-    isNormalUser = true;
-    description = "blasteroid";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      #  thunderbird
-    ];
-    shell = pkgs.fish;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
