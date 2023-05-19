@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./config/packages.nix
     ];
 
   # Bootloader.
@@ -92,24 +93,6 @@
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vscode
-    fish
-    rofi
-    nixpkgs-fmt
-    tdesktop
-    nodejs
-    git
-  ];
-
-  environment.interactiveShellInit = ''
-    alias config='code /etc/nixos/'
-  '';
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
