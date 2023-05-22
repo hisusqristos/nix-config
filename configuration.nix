@@ -4,6 +4,9 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
   imports =
     [
@@ -12,7 +15,16 @@
       ./config/packages.nix
       ./config/keymap.nix
       ./config/users.nix
+
+      # home manager
+      (import "${home-manager}/nixos")
     ];
+
+  home-manager.users.my_username = {
+    /* The home.stateVersion option does not have a default and must be set */
+    home.stateVersion = "22.11";
+    /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

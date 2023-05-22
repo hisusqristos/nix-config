@@ -17,5 +17,11 @@
       nodejs
       git
       exercism
+
+      # elm packages <3
+      elmPackages.elm
+      elmPackages.elm-test
+      elmPackages.elm-format
+      elmPackages.elm-review
     ];
 }
