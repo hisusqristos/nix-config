@@ -12,15 +12,10 @@
       ./config/packages.nix
       ./config/keymap.nix
       ./config/users.nix
-
+      ./config/home.nix
       # home manager
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
-
-  home-manager.users.blasteroid = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-    home.packages = [ ];
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
