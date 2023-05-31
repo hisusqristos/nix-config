@@ -9,7 +9,18 @@
 
   environment.systemPackages = with pkgs;
     [
-      vscode
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          bbenoist.nix
+        ] ++ vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "roseate";
+            publisher = "endorfina";
+            version = "0.3.0";
+            sha256 = "sha256-RebMJXfY8hyh1+FgMpkMfsxKUSSgEtd0ZsL7pzxVUMg=";
+          }
+        ];
+      })
       fish
       rofi
       nixpkgs-fmt
