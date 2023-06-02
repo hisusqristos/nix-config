@@ -7,6 +7,7 @@
   ];
 
   home-manager.users.blasteroid = { pkgs, ... }: {
+
     home.stateVersion = "22.11";
     home.packages = with pkgs;
       [
@@ -17,11 +18,13 @@
         nodePackages."http-server"
       ];
 
-    # programs.rofi = {
-    #   enable = true;
-    #   theme = theme;
-    # };
-
+    programs.fish = {
+      enable = true;
+      shellAliases = {
+        listgen = "nix-env --list-generations";
+        ngc = "nix-collect-garbage -d";
+      };
+    };
 
     programs.home-manager = {
       enable = true;
