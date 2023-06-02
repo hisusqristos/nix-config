@@ -12,6 +12,7 @@
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           bbenoist.nix
+          jnoortheen.nix-ide
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "roseate";
@@ -27,6 +28,7 @@
       tdesktop
       nodejs
       git
+      dino
       exercism
 
       # elm packages <3
