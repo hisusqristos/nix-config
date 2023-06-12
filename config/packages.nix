@@ -12,6 +12,7 @@
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           bbenoist.nix
+          ms-vsliveshare.vsliveshare
           jnoortheen.nix-ide
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
