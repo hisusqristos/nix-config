@@ -13,7 +13,7 @@
       [
         node2nix
         htop
-
+        sxhkd
         # npm packages
         nodePackages."http-server"
       ];
