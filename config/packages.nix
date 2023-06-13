@@ -14,6 +14,8 @@
           bbenoist.nix
           ms-vsliveshare.vsliveshare
           jnoortheen.nix-ide
+          elmtooling.elm-ls-vscode
+          sbrink.elm
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "roseate";
