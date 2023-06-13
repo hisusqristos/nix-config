@@ -15,13 +15,18 @@
           ms-vsliveshare.vsliveshare
           jnoortheen.nix-ide
           elmtooling.elm-ls-vscode
-          sbrink.elm
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "roseate";
             publisher = "endorfina";
             version = "0.3.0";
             sha256 = "sha256-RebMJXfY8hyh1+FgMpkMfsxKUSSgEtd0ZsL7pzxVUMg=";
+          }
+          {
+            name = "elmmet";
+            publisher = "necinc";
+            version = "1.0.1";
+            sha256 = "sha256-ROE1Kv0oOCI1EytnqBnntL7yQ+a2u+YY7j7EaURzieo=";
           }
         ];
       })
