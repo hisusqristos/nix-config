@@ -17,6 +17,12 @@
           elmtooling.elm-ls-vscode
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
+            name = "npm-intellisense";
+            publisher = "christian-kohler";
+            version = "1.4.4";
+            sha256 = "sha256-RLni/Iz2ZIX8/17gArc90ycVU9wPhNBa32Pe47sdGr0=";
+          }
+          {
             name = "roseate";
             publisher = "endorfina";
             version = "0.3.0";
@@ -38,6 +44,9 @@
       git
       dino
       exercism
+
+      # node packages
+      nodePackages."typescript"
 
       # elm packages <3
       elmPackages.elm
