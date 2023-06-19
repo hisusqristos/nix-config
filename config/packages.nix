@@ -42,6 +42,7 @@
       tdesktop
       nodejs
       git
+      gitless
       dino
       exercism
 
