@@ -15,27 +15,20 @@ jobs:
         run: |
           issue_title="${{ github.event.issue.title }}"
           if [[ $issue_title == "varyadaser"* ]]; then
-            echo "::set-output name=match::true"
+            echo "MATCH_FOUND=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=match::false"
+            echo "MATCH_FOUND=false" >> $GITHUB_ENV
           fi
 
-      - name: Add Label
-        if: steps.check-issue.outputs.match == 'true'
-        uses: actions/github-script@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const label = 'daser';
-            const issueNumber = context.issue.number;
-
-            const addLabel = async () => {
-              await github.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                labels: [label]
-              });
-            };
-
-            addLabel();
+          node-version: '16'
+          
+      - name: Add Label
+        if: env.MATCH_FOUND == 'true'
+        run: |
+          npm install -g @actions/github-script
+          label='daser'
+          issueNumber=${{ github.event.issue.number }}
+          npx github-label -t ${{ secrets.GITHUB_TOKEN }} -o ${{ github.repository_owner }} -r ${{ github.repository }} -i $issueNumber -l $label
