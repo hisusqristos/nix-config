@@ -1,0 +1,41 @@
+name: Add Label to Issues
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  add-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Issue Name
+        id: check-issue
+        run: |
+          issue_title="${{ github.event.issue.title }}"
+          if [[ $issue_title == "varyadaser"* ]]; then
+            echo "::set-output name=match::true"
+          else
+            echo "::set-output name=match::false"
+          fi
+
+      - name: Add Label
+        if: steps.check-issue.outputs.match == 'true'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const label = 'daser';
+            const issueNumber = context.issue.number;
+
+            const addLabel = async () => {
+              await github.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: [label]
+              });
+            };
+
+            addLabel();
